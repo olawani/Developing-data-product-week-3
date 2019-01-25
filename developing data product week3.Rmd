@@ -1,0 +1,42 @@
+---
+title: "Developing data products week3"
+author: "Osiepere"
+date: "2019 M01 25"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## R Markdown
+
+This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+## Slide with Bullets
+
+World Cities Map
+The map shows a map of the world cities. The data was taken from https://simplemaps.com/data/world-cities
+
+library(leaflet)
+
+## Slide with R Output
+
+```{r}
+df <- read.csv("worldcities.csv")
+df %>% leaflet() %>%
+  addTiles() %>%
+  addMarkers(
+    lat = df$lat, 
+    lng = df$lng, 
+    popup = paste(df$popup, "<br>", "City:", df$city_ascii),
+    clusterOptions = markerClusterOptions())
+```
+
+## Slide with Plot
+
+```{r}
+```
+
